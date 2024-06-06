@@ -69,5 +69,13 @@ thead {
     justify-content: center;
 }
 
-/* .button-div > button {
-} */
+button {
+    font-family: fira-code;
+    font-weight: 900;
+    font-size: 1rem;
+    background-color: white;
+    color: black;
+    height: fit-content;
+    border: 3px solid black;
+    border-radius: 16px;
+}
