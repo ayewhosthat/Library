@@ -10,6 +10,8 @@ html, body {
 
 body {
     margin: 0;
+    font-family: fira-code;
+
 }
 
 .greeting {
@@ -42,6 +44,30 @@ body {
 
 .greeting > div > p {
     font-size: 2.5rem;
-    font-family: fira-code;
     font-weight: bold;
 }
+
+.content {
+    display: flex;
+}
+
+table {
+    flex: 1;
+    width: 80%;
+}
+
+thead {
+    background-color: slateblue;
+    color: white;
+    font-weight: bold;
+}
+
+.button-div {
+    display: flex;
+    height: 10%;
+    gap: 5%;
+    justify-content: center;
+}
+
+/* .button-div > button {
+} */
