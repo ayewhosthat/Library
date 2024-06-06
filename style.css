@@ -1,0 +1,24 @@
+html, body {
+    height: 100%;
+    width: auto;
+}
+
+body {
+    margin: 0;
+}
+
+.content {
+    height: 100%;
+}
+
+.greeting {
+    display: flex;
+    height: 20%;
+    max-width: 1200px;
+}
+
+.greeting > img, .greeting > h2 {
+    height: 30%;
+    justify-items: center;
+    align-items: center;
+}
