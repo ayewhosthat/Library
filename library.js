@@ -1,25 +1,25 @@
-const myLibrary = [];
-
-function Book(title, author, num_pages, read) {
+function Book(title, author, num_pages, read_book) {
     this.title = title;
     this.author = author;
     this.num_pages = num_pages;
-    this.read = read;
+    this.read = read_book;
 
     this.info = function() {
-        let output = '';
-        let read_book;
-        if (this.read) {
-            read_book = 'read';
-        } else {
-            read_book = 'not read yet';
-        }
-        output = `${this.title} by ${this.author}, ${this.num_pages}, ${read_book}`;
+        output = `${this.title} by ${this.author}, ${this.num_pages}, ${this.read}`;
         return output;
     }
 }
 
+const myLibrary = [];
+const sampleLibrary = [];
+const diaryOfAWimpyKid = new Book('Diary of a Wimpy Kid', 'Jeff Kinney', 224, "yes");
+const dogDays = new Book('Dog Days', 'Jeff Kinney', 217, "yes");
+
+addBookToLibrary(diaryOfAWimpyKid);
+addBookToLibrary(dogDays);
+
 // add event listener to buttons that changes their colour when they are hovered over
+// also add event listener for each button when clicked (separate functions)
 const buttons = document.querySelectorAll('button');
 for (let i = 0; i < buttons.length; i++) {
     const btn = buttons[i];
@@ -31,50 +31,15 @@ for (let i = 0; i < buttons.length; i++) {
     });
 }
 
+// add book button
+const addBook = document.querySelector('.add-book');
+addBook.addEventListener('click', () => {
+    const modal = document.createElement('dialog');
+});
+
 // const addBookToLibrary = (book) => {
 //     myLibrary.push(book);
 // };
 
-// const displayAllBooks = (book) => {
 
-//     function hasRead(has_read) {
-//         let read_book;
-//         if (has_read) {
-//             read_book = 'yes';
-//         } else {
-//             read_book = 'no';
-//         }
-//         return read_book;
-//     }
 
-//     const page = document.querySelector('body');
-//     const booksContainer = document.createElement('div');
-//     booksContainer.classList.add('book-container');
-//     for (const book of myLibrary) {
-//         const bookCard = document.createElement('div');
-//         const bookTitle = document.createElement('h3');
-//         bookTitle.textContent = `Title: ${book['title']}`;
-//         const bookAuthor = document.createElement('h3');
-//         bookAuthor.textContent = `Author: ${book['author']}`;
-//         const bookPages = document.createElement('h3');
-//         bookPages.textContent = `Pages: ${book['num_pages']}`;
-//         const readBook = document.createElement('h3');
-//         readBook.textContent = `Read: ${hasRead(book['read'])}`;
-//         bookCard.appendChild(bookTitle);
-//         bookCard.appendChild(bookAuthor);
-//         bookCard.appendChild(bookPages);
-//         bookCard.append(readBook);
-//         bookCard.style.border = '2px solid black';
-//         bookCard.style.borderRadius = '16px';
-//         booksContainer.appendChild(bookCard);
-//     }
-//     page.appendChild(booksContainer);
-// };
-
-// const diaryOfAWimpyKid = new Book('Diary of a Wimpy Kid', 'Jeff Kinney', 224, true);
-// const dogDays = new Book('Dog Days', 'Jeff Kinney', 217, true);
-
-// addBookToLibrary(diaryOfAWimpyKid);
-// addBookToLibrary(dogDays);
-
-// displayAllBooks();
