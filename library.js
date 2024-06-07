@@ -10,13 +10,36 @@ function Book(title, author, num_pages, read_book) {
     }
 }
 
+const addBookToLibrary = (book, library) => {
+    library.push(book);
+};
+
+const addBookToTable = (book) => {
+    const table = document.querySelector('table');
+    const title = book['title'];
+    const author = book['author'];
+    const pages = book['num_pages'];
+    const read = book['read'];
+
+    const template = `
+        <tr>
+            <td>${title}</td>
+            <td>${author}</td>
+            <td>${pages}</td>
+            <td>${read}</td>
+            <th><button class="delete"><img src="assets/delete-forever-outline.svg">Delete</button></th>
+        </tr>
+    `;
+    table.innerHTML += template;
+}
+
 const myLibrary = [];
 const sampleLibrary = [];
+let hasLoadedSample = false;
 const diaryOfAWimpyKid = new Book('Diary of a Wimpy Kid', 'Jeff Kinney', 224, "yes");
 const dogDays = new Book('Dog Days', 'Jeff Kinney', 217, "yes");
-
-addBookToLibrary(diaryOfAWimpyKid);
-addBookToLibrary(dogDays);
+addBookToLibrary(diaryOfAWimpyKid, sampleLibrary);
+addBookToLibrary(dogDays, sampleLibrary);
 
 // add event listener to buttons that changes their colour when they are hovered over
 // also add event listener for each button when clicked (separate functions)
@@ -31,15 +54,20 @@ for (let i = 0; i < buttons.length; i++) {
     });
 }
 
-// add book button
-const addBook = document.querySelector('.add-book');
-addBook.addEventListener('click', () => {
-    const modal = document.createElement('dialog');
+// load sample library
+const loadSample = document.querySelector('.load');
+loadSample.addEventListener('click', () => {
+    if (!hasLoadedSample) {
+        for (let i = 0; i < sampleLibrary.length; i++) {
+        const book = sampleLibrary[i];
+        addBookToTable(book);
+        };
+        hasLoadedSample = true;   
+    }
 });
 
-const addBookToLibrary = (book, library) => {
-    library.push(book);
-};
-
-
-
+// // add book button
+// const addBook = document.querySelector('.add-book');
+// addBook.addEventListener('click', () => {
+//     const modal = document.createElement('dialog');
+// });

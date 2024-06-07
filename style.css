@@ -12,11 +12,13 @@ body {
     margin: 0;
     font-family: fira-code;
     width: 100%;
+    font-weight: bold;
 }
 
 .greeting {
     display: flex;
-    height: 20%;
+    height: max(100px,20%);
+    position: relative;
 }
 
 .greeting > div {
@@ -38,18 +40,19 @@ body {
 }
 
 .greeting > div > img {
-    height: 40%;
-    max-height: 100%;
+    height: clamp(75px,10%,100%);
+    position: fixed;
 }
 
 .greeting > div > p {
     font-size: 2.5rem;
-    font-weight: bold;
+    min-height: fit-content;
 }
 
 .content {
     display: flex;
     justify-content: center;
+    min-height: fit-content;
 }
 
 table {
@@ -60,6 +63,15 @@ tr {
     width: 100%;
     display: grid;
     grid-template-columns: 2fr 3fr 1fr 1fr 1fr;
+}
+
+th, td {
+    align-self: center;
+    justify-self: center;
+}
+
+th > img {
+    height: 2rem;
 }
 
 /* can't explicitly style thead, but can style tr and give it a class name */
@@ -88,6 +100,10 @@ button {
     height: fit-content;
     border: 3px solid green;
     border-radius: 16px;
+}
+
+.delete {
+    border: none;
 }
 
 button:hover {
