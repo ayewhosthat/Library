@@ -26,8 +26,8 @@ const addBookToTable = (book) => {
             <td>${title}</td>
             <td>${author}</td>
             <td>${pages}</td>
-            <td>${read}</td>
-            <th><button class="delete"><img src="assets/delete-forever-outline.svg">Delete</button></th>
+            <td><div class="read-status-container">${read}<input type="checkbox"></input></div></td>
+            <th><button class="delete"><img src="assets/delete-forever-outline.svg"><p>Delete</p></button></th>
         </tr>
     `;
     table.innerHTML += template;
@@ -64,6 +64,24 @@ loadSample.addEventListener('click', () => {
         };
         hasLoadedSample = true;   
     }
+});
+
+// reset to default
+const reset = document.querySelector('.reset');
+reset.addEventListener('click', () => {
+    const table = document.querySelector('table');
+    table.innerHTML = `
+            <thead>
+                <tr class="headings">
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Pages</th>
+                    <th>Read?</th>
+                    <th>Delete?</th>
+                </tr>
+            </thead>
+    `;
+    hasLoadedSample = false;
 });
 
 // // add book button
