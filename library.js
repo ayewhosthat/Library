@@ -1,3 +1,6 @@
+const table = document.querySelector('table');
+let myLibrary = [];
+
 function Book(title, author, num_pages, read_book) {
     this.title = title;
     this.author = author;
@@ -15,7 +18,6 @@ const addBookToLibrary = (book) => {
 };
 
 const addBookToTable = (book, i) => {
-    const table = document.querySelector('table');
     const title = book['title'];
     const author = book['author'];
     const pages = book['num_pages'];
@@ -38,14 +40,6 @@ const addBookToTable = (book, i) => {
     table.innerHTML += template;
 }
 
-const myLibrary = [];
-let hasLoadedSample = false;
-const diaryOfAWimpyKid = new Book('Diary of a Wimpy Kid', 'Jeff Kinney', 224, 'yes');
-const dogDays = new Book('Dog Days', 'Jeff Kinney', 217, 'yes');
-const rodrickRules = new Book('Rodrick Rules', 'Jeff Kinney', 224, 'no')
-addBookToLibrary(diaryOfAWimpyKid);
-addBookToLibrary(dogDays);
-addBookToLibrary(rodrickRules);
 
 // add event listener to buttons that changes their colour when they are hovered over
 // also add event listener for each button when clicked (separate functions)
@@ -60,17 +54,12 @@ for (let i = 0; i < buttons.length; i++) {
     });
 }
 
-// load sample library
-const loadSample = document.querySelector('.load');
-loadSample.addEventListener('click', () => {
-    if (!hasLoadedSample) {
-        for (let i = 0; i < myLibrary.length; i++) {
-        const book = myLibrary[i];
-        addBookToTable(book, i);
-        };
-        hasLoadedSample = true; 
-        addDeleteBehaviour();  
-    }
+// add book/open modal
+const modal = document.querySelector('.modal');
+const closeModal = document.querySelector('.close-modal');
+const openModal = document.querySelector('.add-book');
+openModal.addEventListener('click', () => {
+    modal.showModal();
 });
 
 // reset to default
@@ -88,7 +77,6 @@ reset.addEventListener('click', () => {
                 </tr>
             </thead>
     `;
-    hasLoadedSample = false;
 });
 
 // delete book from library
@@ -97,8 +85,24 @@ function addDeleteBehaviour() {
     for (let j = 0; j < dels.length; j++) {
         const del = dels[j];
         del.addEventListener('click', () => {
-            const index = del.dataset.index;
-            console.log(index);
+            const index = Number.parseInt(del.dataset.index);
+            // remove from array and then rebuild according to said modified array
+            myLibrary.splice(index,1);
+            table.innerHTML = `
+            <thead>
+                <tr class="headings">
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Pages</th>
+                    <th>Read?</th>
+                    <th>Delete?</th>
+                </tr>
+            </thead>
+    `;
+            for (let n = 0; n < myLibrary.length; n++) {
+                const book = myLibrary[n];
+                addBookToTable(book, n);
+            }
         });
     }
 }

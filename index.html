@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library!</title>
     <link rel="stylesheet" href="style.css">
-    <script src="library.js" defer></script>
 </head>
 <body>
     <div class="greeting">
@@ -31,8 +30,27 @@
     </div>
     <div class="button-div">
         <button class="add-book">Add book</button>
-        <button class="load">Load example</button>
         <button class="reset">Reset</button>
     </div>
+
+    <dialog class="modal">
+        <h3>Please enter your book information below:</h3>
+        <form class="book-form" method="dialog">
+            <label for="title">Title
+                <input type="text" required>
+            </label>
+            <label for="author">Author
+                <input type="text" required>
+            </label>
+                <input type="num_pages" required>Number of Pages
+            </label>
+            <label for="title">Read?
+                <input type="radio" required>
+            </label>
+        </form>
+        <button class="close-modal">Close</button>
+    </dialog>
+
+    <script src="library.js" defer></script>
 </body>
 </html>
