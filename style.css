@@ -93,7 +93,7 @@ th img {
     margin: 2% auto auto auto;
 }
 
-button {
+button, input[type="submit"] {
     font-family: fira-code;
     font-weight: 900;
     font-size: 1rem;
@@ -117,6 +117,16 @@ button {
     align-self: center;
 }
 
-button:hover {
+button:hover, input[type="submit"]:hover {
     border: 5px solid black;
+}
+
+.close-modal {
+    margin-top: 2%;
+}
+
+form {
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    gap: 16px;
 }

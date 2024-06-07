@@ -58,8 +58,18 @@ for (let i = 0; i < buttons.length; i++) {
 const modal = document.querySelector('.modal');
 const closeModal = document.querySelector('.close-modal');
 const openModal = document.querySelector('.add-book');
+const submitForm = document.querySelector('input[type="submit"]');
 openModal.addEventListener('click', () => {
     modal.showModal();
+});
+closeModal.addEventListener('click', () => {
+    modal.close();
+});
+submitForm.addEventListener('mouseenter', () => {
+    submitForm.style.backgroundColor = '#06b6d4';
+});
+submitForm.addEventListener('mouseleave', () => {
+    submitForm.style.backgroundColor = 'white';
 });
 
 // reset to default

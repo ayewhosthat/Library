@@ -36,19 +36,34 @@
     <dialog class="modal">
         <h3>Please enter your book information below:</h3>
         <form class="book-form" method="dialog">
-            <label for="title">Title
-                <input type="text" required>
-            </label>
-            <label for="author">Author
-                <input type="text" required>
-            </label>
-                <input type="num_pages" required>Number of Pages
-            </label>
-            <label for="title">Read?
-                <input type="radio" required>
-            </label>
+            <div>
+                <label for="title">Title
+                    <input type="text" required>
+                </label>
+            </div>
+            <div>
+                <label for="author">Author
+                    <input type="text" required>
+                </label>
+            </div>
+            <div>
+                <label for="num_pages">Number of Pages
+                    <input type="number" required>
+                </label>
+            </div>
+            <div>
+                <label for="read-choice1">Read
+                    <input type="radio" id="read-choice1" value="yes">
+                </label>
+                <label for="read-choice2">Not yet read
+                    <input type="radio" id="read-choice2" value="no">
+                </label>
+            </div>
+            <div>
+                <input type="submit">
+                <button class="close-modal">Close</button>
+            </div>
         </form>
-        <button class="close-modal">Close</button>
     </dialog>
 
     <script src="library.js" defer></script>
