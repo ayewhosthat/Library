@@ -10,8 +10,8 @@ function Book(title, author, num_pages, read_book) {
     }
 }
 
-const addBookToLibrary = (book, library) => {
-    library.push(book);
+const addBookToLibrary = (book) => {
+    myLibrary.push(book);
 };
 
 const addBookToTable = (book) => {
@@ -21,12 +21,17 @@ const addBookToTable = (book) => {
     const pages = book['num_pages'];
     const read = book['read'];
 
+    let checked;
+    if (read === "yes") {
+        checked = "checked";
+    }
+
     const template = `
         <tr>
             <td>${title}</td>
             <td>${author}</td>
             <td>${pages}</td>
-            <td><div class="read-status-container">${read}<input type="checkbox"></input></div></td>
+            <td><div class="read-status-container"><input type="checkbox" ${checked}></input></div></td>
             <th><button class="delete"><img src="assets/delete-forever-outline.svg"><p>Delete</p></button></th>
         </tr>
     `;
@@ -34,12 +39,13 @@ const addBookToTable = (book) => {
 }
 
 const myLibrary = [];
-const sampleLibrary = [];
 let hasLoadedSample = false;
-const diaryOfAWimpyKid = new Book('Diary of a Wimpy Kid', 'Jeff Kinney', 224, "yes");
-const dogDays = new Book('Dog Days', 'Jeff Kinney', 217, "yes");
-addBookToLibrary(diaryOfAWimpyKid, sampleLibrary);
-addBookToLibrary(dogDays, sampleLibrary);
+const diaryOfAWimpyKid = new Book('Diary of a Wimpy Kid', 'Jeff Kinney', 224, 'yes');
+const dogDays = new Book('Dog Days', 'Jeff Kinney', 217, 'yes');
+const rodrickRules = new Book('Rodrick Rules', 'Jeff Kinney', 224, 'no')
+addBookToLibrary(diaryOfAWimpyKid);
+addBookToLibrary(dogDays);
+addBookToLibrary(rodrickRules);
 
 // add event listener to buttons that changes their colour when they are hovered over
 // also add event listener for each button when clicked (separate functions)
@@ -58,8 +64,8 @@ for (let i = 0; i < buttons.length; i++) {
 const loadSample = document.querySelector('.load');
 loadSample.addEventListener('click', () => {
     if (!hasLoadedSample) {
-        for (let i = 0; i < sampleLibrary.length; i++) {
-        const book = sampleLibrary[i];
+        for (let i = 0; i < myLibrary.length; i++) {
+        const book = myLibrary[i];
         addBookToTable(book);
         };
         hasLoadedSample = true;   
@@ -84,8 +90,4 @@ reset.addEventListener('click', () => {
     hasLoadedSample = false;
 });
 
-// // add book button
-// const addBook = document.querySelector('.add-book');
-// addBook.addEventListener('click', () => {
-//     const modal = document.createElement('dialog');
-// });
+// delete book from library
