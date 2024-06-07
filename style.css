@@ -11,7 +11,7 @@ html, body {
 body {
     margin: 0;
     font-family: fira-code;
-
+    width: 100%;
 }
 
 .greeting {
@@ -49,17 +49,26 @@ body {
 
 .content {
     display: flex;
+    justify-content: center;
 }
 
 table {
-    flex: 1;
-    width: 80%;
+    width: 90%;
 }
 
-thead {
+tr {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 3fr 1fr 1fr 1fr;
+}
+
+/* can't explicitly style thead, but can style tr and give it a class name */
+.headings {
     background-color: slateblue;
     color: white;
     font-weight: bold;
+    border: 4px solid black;
+    border-radius: 16px;
 }
 
 .button-div {
@@ -67,6 +76,7 @@ thead {
     height: 10%;
     gap: 5%;
     justify-content: center;
+    margin: 2% auto auto auto;
 }
 
 button {
@@ -74,8 +84,12 @@ button {
     font-weight: 900;
     font-size: 1rem;
     background-color: white;
-    color: black;
+    color: red;
     height: fit-content;
-    border: 3px solid black;
+    border: 3px solid green;
     border-radius: 16px;
+}
+
+button:hover {
+    border: 5px solid black;
 }
