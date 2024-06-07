@@ -103,6 +103,7 @@ button {
     border: 5px solid green;
     border-radius: 16px;
     padding: 5px;
+    cursor: pointer;
 }
 
 .delete {

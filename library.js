@@ -14,7 +14,7 @@ const addBookToLibrary = (book) => {
     myLibrary.push(book);
 };
 
-const addBookToTable = (book) => {
+const addBookToTable = (book, i) => {
     const table = document.querySelector('table');
     const title = book['title'];
     const author = book['author'];
@@ -32,7 +32,7 @@ const addBookToTable = (book) => {
             <td>${author}</td>
             <td>${pages}</td>
             <td><div class="read-status-container"><input type="checkbox" ${checked}></input></div></td>
-            <th><button class="delete"><img src="assets/delete-forever-outline.svg"><p>Delete</p></button></th>
+            <th><button data-index="${i}" class="delete"><img src="assets/delete-forever-outline.svg"><p>Delete</p></button></th>
         </tr>
     `;
     table.innerHTML += template;
@@ -66,9 +66,10 @@ loadSample.addEventListener('click', () => {
     if (!hasLoadedSample) {
         for (let i = 0; i < myLibrary.length; i++) {
         const book = myLibrary[i];
-        addBookToTable(book);
+        addBookToTable(book, i);
         };
-        hasLoadedSample = true;   
+        hasLoadedSample = true; 
+        addDeleteBehaviour();  
     }
 });
 
@@ -91,3 +92,13 @@ reset.addEventListener('click', () => {
 });
 
 // delete book from library
+function addDeleteBehaviour() {
+    const dels = document.querySelectorAll('.delete');
+    for (let j = 0; j < dels.length; j++) {
+        const del = dels[j];
+        del.addEventListener('click', () => {
+            const index = del.dataset.index;
+            console.log(index);
+        });
+    }
+}
