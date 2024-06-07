@@ -37,9 +37,9 @@ addBook.addEventListener('click', () => {
     const modal = document.createElement('dialog');
 });
 
-// const addBookToLibrary = (book) => {
-//     myLibrary.push(book);
-// };
+const addBookToLibrary = (book, library) => {
+    library.push(book);
+};
 
 
 
