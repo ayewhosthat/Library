@@ -13,6 +13,7 @@ body {
     font-family: fira-code;
     width: 100%;
     font-weight: bold;
+    box-sizing: border-box;
 }
 
 .greeting {
@@ -68,9 +69,10 @@ tr {
 th, td {
     align-self: center;
     justify-self: center;
+    height: fit-content;
 }
 
-th > img {
+th img {
     height: 2rem;
 }
 
@@ -98,12 +100,20 @@ button {
     background-color: white;
     color: red;
     height: fit-content;
-    border: 3px solid green;
+    border: 5px solid green;
     border-radius: 16px;
+    padding: 5px;
 }
 
 .delete {
-    border: none;
+    display: grid;
+    border: 5px solid white;
+    grid-template-columns: 1fr 2fr;
+}
+
+.delete > p, .delete > img {
+    justify-self: center;
+    align-self: center;
 }
 
 button:hover {
