@@ -1,4 +1,4 @@
-const table = document.querySelector('table');
+const tableBody = document.querySelector('tbody');
 let myLibrary = [];
 
 function Book(title, author, num_pages, read_book) {
@@ -10,6 +10,11 @@ function Book(title, author, num_pages, read_book) {
     this.info = function() {
         output = `${this.title} by ${this.author}, ${this.num_pages}, ${this.read}`;
         return output;
+    }
+
+    this.changeReadStatus = function() {
+        this.read = this.read === "Not Read Yet" ? "Read" : "Not Read Yet";
+        return this.read;
     }
 }
 
@@ -33,13 +38,19 @@ const addBookToTable = (book, i) => {
             <td>${title}</td>
             <td>${author}</td>
             <td>${pages}</td>
-            <td><div class="read-status-container"><input type="checkbox" ${checked}></input></div></td>
+            <td><input type="checkbox" ${checked}></input></td>
             <th><button data-index="${i}" class="delete"><img src="assets/delete-forever-outline.svg"><p>Delete</p></button></th>
         </tr>
     `;
-    table.innerHTML += template;
-}
+    tableBody.innerHTML += template;
 
+    const checkbox = document.querySelector('input[type="checkbox"]');
+    checkbox.addEventListener('click', () => {
+        book.changeReadStatus();
+        console.log(book.read);
+    });
+
+}
 
 // add event listener to buttons that changes their colour when they are hovered over
 // also add event listener for each button when clicked (separate functions)
@@ -85,7 +96,7 @@ form.addEventListener('submit', (e) => {
     const hasRead = document.querySelector('input[type="radio"]:checked').value.toLowerCase();
     const newBook = new Book(title, author, numPages, hasRead);
     addBookToLibrary(newBook);
-    const numEntries = table.rows.length - 1;
+    const numEntries = tableBody.rows.length - 1; // subtract 1 from number of tr's to account for header row
     addBookToTable(newBook, numEntries);
     form.reset();
     modal.close(); // close the form
@@ -94,16 +105,5 @@ form.addEventListener('submit', (e) => {
 // reset to default
 const reset = document.querySelector('.reset');
 reset.addEventListener('click', () => {
-    const table = document.querySelector('table');
-    table.innerHTML = `
-            <thead>
-                <tr class="headings">
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Pages</th>
-                    <th>Read?</th>
-                    <th>Delete?</th>
-                </tr>
-            </thead>
-    `;
+    tableBody.innerHTML = ``;
 });
