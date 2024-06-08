@@ -63,6 +63,7 @@ openModal.addEventListener('click', () => {
     modal.showModal();
 });
 closeModal.addEventListener('click', () => {
+    form.reset();
     modal.close();
 });
 submitForm.addEventListener('mouseenter', () => {
@@ -93,7 +94,7 @@ form.addEventListener('submit', (e) => {
     const newBook = new Book(title, author, numPages, readBook);
     addBookToLibrary(newBook);
     addBookToTable(newBook);
-
+    form.reset();
     modal.close(); // close the form
 });
 

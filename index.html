@@ -38,30 +38,30 @@
         <form class="book-form" method="dialog">
             <div>
                 <label>Title
-                    <input id="title" type="text" required>
+                    <input name="book_title" id="title" type="text" required>
                 </label>
             </div>
             <div>
                 <label>Author
-                    <input id="author" type="text" required>
+                    <input name="book_author" id="author" type="text" required>
                 </label>
             </div>
             <div>
                 <label>Number of Pages
-                    <input id="num_pages" type="number" required>
+                    <input name="book_num_pages" id="num_pages" type="number" required>
                 </label>
             </div>
             <div>
                 <label>Read
-                    <input id="read-choice1" type="radio" value="yes">
+                    <input name="has_read_book" id="read-choice1" type="radio" value="yes">
                 </label>
                 <label id="read-choice2">Not yet read
-                    <input id="read-choice2" type="radio" value="no">
+                    <input name="has_not_read_book" id="read-choice2" type="radio" value="no">
                 </label>
             </div>
             <div>
                 <input type="submit">
-                <button class="close-modal">Close</button>
+                <button class="close-modal" type="button">Close</button>
             </div>
         </form>
     </dialog>
