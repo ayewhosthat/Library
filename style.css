@@ -107,9 +107,10 @@ button, input[type="submit"] {
 }
 
 .delete {
-    display: grid;
+    display: flex;
     border: 5px solid white;
-    grid-template-columns: 1fr 2fr;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .delete > p, .delete > img {
