@@ -1,5 +1,5 @@
 # Overview
-This was a very fun project to undertake; 
+This was a very fun project to undertake; I had some good practice using an assortment of previously learned concepts, including but not limited to: pseudo-selectors, attribute selectors, modals, forms, dialogs, working with tables (both in HTML and in Javascript), etc.
 
 ### Next Steps
 Potential areas for improvement include:
