@@ -24,7 +24,7 @@ const addBookToTable = (book, i) => {
     const read = book['read'];
 
     let checked;
-    if (read === "yes") {
+    if (read === "read") {
         checked = "checked";
     }
 
@@ -82,16 +82,8 @@ form.addEventListener('submit', (e) => {
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const numPages = document.getElementById('num_pages').value;
-    const readChoice1 = document.getElementById('read-choice1').value;
-    const readChoice2 = document.getElementById('read-choice2').value;
-    let readBook;
-    if (readChoice1 !== undefined && readChoice2 === undefined) {
-        readBook = readChoice1;
-    } else {
-        readBook = readChoice2;
-    }
-
-    const newBook = new Book(title, author, numPages, readBook);
+    const hasRead = document.querySelector('input[type="radio"]:checked').value.toLowerCase();
+    const newBook = new Book(title, author, numPages, hasRead);
     addBookToLibrary(newBook);
     addBookToTable(newBook);
     form.reset();
