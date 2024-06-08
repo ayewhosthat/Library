@@ -85,7 +85,8 @@ form.addEventListener('submit', (e) => {
     const hasRead = document.querySelector('input[type="radio"]:checked').value.toLowerCase();
     const newBook = new Book(title, author, numPages, hasRead);
     addBookToLibrary(newBook);
-    addBookToTable(newBook);
+    const numEntries = table.rows.length - 1;
+    addBookToTable(newBook, numEntries);
     form.reset();
     modal.close(); // close the form
 });
@@ -106,32 +107,3 @@ reset.addEventListener('click', () => {
             </thead>
     `;
 });
-
-// delete book from library
-function addDeleteBehaviour() {
-    const dels = document.querySelectorAll('.delete');
-    for (let j = 0; j < dels.length; j++) {
-        const del = dels[j];
-        del.addEventListener('click', () => {
-            const index = Number.parseInt(del.dataset.index);
-            // remove from array and then rebuild according to said modified array
-            myLibrary.splice(index,1);
-            table.innerHTML = `
-            <thead>
-                <tr class="headings">
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Pages</th>
-                    <th>Read?</th>
-                    <th>Delete?</th>
-                </tr>
-            </thead>
-    `;
-            for (let n = 0; n < myLibrary.length; n++) {
-                const book = myLibrary[n];
-                addBookToTable(book, n);
-            }
-        });
-    }
-}
-
