@@ -72,6 +72,15 @@ submitForm.addEventListener('mouseleave', () => {
     submitForm.style.backgroundColor = 'white';
 });
 
+
+// add book to library
+const form = document.querySelector('form');
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert('form submitted!');
+    modal.close(); // close the form
+});
+
 // reset to default
 const reset = document.querySelector('.reset');
 reset.addEventListener('click', () => {
@@ -116,3 +125,4 @@ function addDeleteBehaviour() {
         });
     }
 }
+
