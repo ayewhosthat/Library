@@ -54,7 +54,7 @@ for (let i = 0; i < buttons.length; i++) {
     });
 }
 
-// add book/open modal
+// open modal
 const modal = document.querySelector('.modal');
 const closeModal = document.querySelector('.close-modal');
 const openModal = document.querySelector('.add-book');
@@ -91,7 +91,8 @@ form.addEventListener('submit', (e) => {
     }
 
     const newBook = new Book(title, author, numPages, readBook);
-    console.log(newBook);
+    addBookToLibrary(newBook);
+    addBookToTable(newBook);
 
     modal.close(); // close the form
 });
