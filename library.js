@@ -77,7 +77,22 @@ submitForm.addEventListener('mouseleave', () => {
 const form = document.querySelector('form');
 form.addEventListener('submit', (e) => {
     e.preventDefault();
-    alert('form submitted!');
+    // get the values submitted by the user
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const numPages = document.getElementById('num_pages').value;
+    const readChoice1 = document.getElementById('read-choice1').value;
+    const readChoice2 = document.getElementById('read-choice2').value;
+    let readBook;
+    if (readChoice1 !== undefined && readChoice2 === undefined) {
+        readBook = readChoice1;
+    } else {
+        readBook = readChoice2;
+    }
+
+    const newBook = new Book(title, author, numPages, readBook);
+    console.log(newBook);
+
     modal.close(); // close the form
 });
 
