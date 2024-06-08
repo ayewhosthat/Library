@@ -23,7 +23,6 @@
                     <th>Author</th>
                     <th>Pages</th>
                     <th>Read?</th>
-                    <th>Delete?</th>
                 </tr>
             </thead>
             <tbody></tbody>
@@ -32,6 +31,7 @@
     <div class="button-div">
         <button class="add-book">Add book</button>
         <button class="reset">Reset</button>
+        <button class="delete">Delete</button>
     </div>
 
     <dialog class="modal">
@@ -54,16 +54,27 @@
             </div>
             <div>
                 <label>Read
-                    <input name="has_read_book" id="read-choice1" type="radio" value="Read">
+                    <input name="has_read_book" id="read-choice" type="radio" value="Read">
                 </label>
                 <label id="read-choice2">Not yet read
-                    <input name="has_not_read_book" id="read-choice2" type="radio" value="Not read">
+                    <input name="has_read_book" id="read-choice" type="radio" value="Not read">
                 </label>
             </div>
             <div>
                 <input type="submit">
                 <button class="close-modal" type="button">Close</button>
             </div>
+        </form>
+    </dialog>
+
+    <dialog class="modal-1">
+        <h3>Enter which # book you wish to delete</h3>
+        <form class="delete-form" method="dialog">
+            <label>Book:
+                <input type="number" id="book_to_del" required>
+            </label>
+            <input class="delete-submit" type="submit">
+            <button class="close-modal-1" type="button">Close</button>
         </form>
     </dialog>
 

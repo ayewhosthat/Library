@@ -106,18 +106,6 @@ button, input[type="submit"] {
     cursor: pointer;
 }
 
-.delete {
-    display: flex;
-    border: 5px solid white;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.delete > p, .delete > img {
-    justify-self: center;
-    align-self: center;
-}
-
 button:hover, input[type="submit"]:hover {
     border: 5px solid black;
 }

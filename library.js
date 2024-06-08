@@ -39,7 +39,6 @@ const addBookToTable = (book, i) => {
             <td>${author}</td>
             <td>${pages}</td>
             <td><input type="checkbox" ${checked}></input></td>
-            <th><button data-index="${i}" class="delete"><img src="assets/delete-forever-outline.svg"><p>Delete</p></button></th>
         </tr>
     `;
     tableBody.innerHTML += template;
@@ -47,7 +46,6 @@ const addBookToTable = (book, i) => {
     const checkbox = document.querySelector('input[type="checkbox"]');
     checkbox.addEventListener('click', () => {
         book.changeReadStatus();
-        console.log(book.read);
     });
 
 }
@@ -106,4 +104,27 @@ form.addEventListener('submit', (e) => {
 const reset = document.querySelector('.reset');
 reset.addEventListener('click', () => {
     tableBody.innerHTML = ``;
+    myLibrary = [];
+});
+
+const deleteForm = document.querySelector('.delete-form')
+const modalDelete = document.querySelector('.modal-1');
+const closeModalDelete = document.querySelector('.close-modal-1');
+const openModalDelete = document.querySelector('.delete');
+openModalDelete.addEventListener('click', () => {
+    if (myLibrary.length > 0) {
+        modalDelete.showModal();
+    }
+});
+closeModalDelete.addEventListener('click', () => {
+    deleteForm.reset();
+    modalDelete.close();
+}); 
+deleteForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const bookToDelete = Number.parseInt(document.getElementById('book_to_del').value) - 1;
+    tableBody.deleteRow(bookToDelete);
+    myLibrary.splice(bookToDelete,1);
+    deleteForm.reset();
+    modalDelete.close();
 });
